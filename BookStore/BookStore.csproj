@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\ContactUs.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="dbup-core" Version="5.0.37" />
     <PackageReference Include="dbup-sqlserver" Version="5.0.37" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">

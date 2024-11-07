@@ -42,12 +42,12 @@ namespace BookStore.Controllers
         public async Task<ActionResult> GetAllBooks()
         {
             var getBooks = await _bookService.GetAllBooks();
-
+            ViewData["ContactForm"] = new ContactViewModel();
             return View(getBooks);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public async Task<IActionResult> ContactUs(ContactViewModel model)
         {
             if (ModelState.IsValid)

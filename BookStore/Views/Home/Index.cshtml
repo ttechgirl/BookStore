@@ -1,9 +1,5 @@
 ﻿@model List<BookStore.DTO.BookDto>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <div class="container">
     <section class="featured-books">
         <h2>Featured Books</h2>
@@ -11,24 +7,18 @@
             @foreach (var book in Model)
             {
                 <div class="book-card">
-                     <img src="@book.CoverImageUrl" alt="@book.Title Cover" /> 
+                    <img src="@book.CoverImageUrl" alt="@book.Title Cover" />
                     <h3>@book.Title</h3>
                     <p>by @book.Author</p>
-                    <p class="price">
-                        $ @book.Price
-                    </p>
+                    <p class="price">$ @book.Price</p>
                 </div>
-
             }
         </div>
-        <a asp-action="GetAllBooks" class="view-all-button">View All Books</a>  
+        <a asp-action="GetAllBooks" class="view-all-button">View All Books</a>
     </section>
-   </div> 
+</div>
 
-@Html.Partial("ContactUs")
-
-
-@* <section id="contact"  class="">
+<section id="contact" class="">
     <div class="contact-container">
         <div class="message-form">
             <h3 class="form-heading text-center">Send us a message</h3>
@@ -36,34 +26,37 @@
             <form action="@Url.Action("ContactUs", "Home")" method="POST" class="form">
                 <div class="form-group">
                     <label for="fullName" class="form-label">Your FullName</label>
-                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                    <input type="text" name="FullName" class="form-input" placeholder="Enter your full name"
+                           value="@(ViewData["ContactForm"] as ContactViewModel)?.FullName" required />
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                    <input type="email" name="Email" class="form-input" placeholder="Enter your email"
+                           value="@(ViewData["ContactForm"] as ContactViewModel)?.Email" required />
                 </div>
 
                 <div class="form-group">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number" required>
+                    <input type="tel" name="PhoneNumber" class="form-input" placeholder="Enter your phone number"
+                           value="@(ViewData["ContactForm"] as ContactViewModel)?.PhoneNumber" required />
                 </div>
 
                 <div class="form-group">
                     <label for="bookTitle" class="form-label">Book Title</label>
-                    <input type="text" id="company" class="form-input" placeholder="Enter book title" required>
+                    <input type="text" name="BookTitle" class="form-input" placeholder="Enter book title"
+                           value="@(ViewData["ContactForm"] as ContactViewModel)?.BookTitle" required />
                 </div>
 
                 <div class="form-group">
                     <label for="message" class="form-label">Message</label>
-                    <textarea id="message" class="form-input form-textarea" rows="4" required></textarea>
+                    <textarea name="Message" class="form-input form-textarea" rows="4" required>
+                        @(ViewData["ContactForm"] as ContactViewModel)?.Message
+                    </textarea>
                 </div>
-                <div>
-                    <button type="submit" class="submit-button">Send message</button>
-                </div>
+
+                <button type="submit" class="submit-button">Send message</button>
             </form>
         </div>
     </div>
-  </section> *@
-
-
+</section>
