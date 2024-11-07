@@ -1,0 +1,66 @@
+﻿@model List<BookStore.DTO.BookDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <section class="featured-books">
+        <h2>Featured Books</h2>
+        <div class="book-grid">
+            @foreach (var book in Model)
+            {
+                <div class="book-card">
+                     <img src="@book.CoverImageUrl" alt="@book.Title Cover" /> 
+                    <h3>@book.Title</h3>
+                    <p>by @book.Author</p>
+                    <p class="price">
+                        $ @book.Price
+                    </p>
+                </div>
+
+            }
+        </div>
+        <a asp-action="GetAllBooks" class="view-all-button">View All Books</a>  
+    </section>
+   </div> 
+
+<section id="contact"  class="">
+    <div class="contact-container">
+        <div class="message-form">
+            <h3 class="form-heading text-center">Send us a message</h3>
+            <p class="description">We are glad to have your order.</p>
+            <form action="@Url.Action("ContactUs", "Home")" method="POST" class="form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Your FullName</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone number</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookTitle" class="form-label">Book Title</label>
+                    <input type="text" id="company" class="form-input" placeholder="Enter book title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-input form-textarea" rows="4" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="submit-button">Send message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </section>
+
+

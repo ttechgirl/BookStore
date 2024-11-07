@@ -1,0 +1,24 @@
+﻿@model List<BookStore.DTO.BookDto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <section class="featured-books">
+        <h2>Available Books</h2>
+        <div class="book-grid">
+            @foreach (var book in Model)
+            {
+                <div class="book-card">
+                    <img src="@book.CoverImageUrl" alt="@book.Title Cover" />
+                    <h3>@book.Title</h3>
+                    <p>by @book.Author</p>
+                    <p class="price">
+                        ₦ @book.Price
+                    </p>
+                </div>
+            }
+        </div>
+    </section>
+</div> 
