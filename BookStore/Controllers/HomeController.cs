@@ -34,7 +34,11 @@ namespace BookStore.Controllers
         public async Task<ActionResult> Index()
         {
             var featuredBooks = await _bookService.FeaturedBooks();
-
+            var model = new IndexViewModel
+            {
+                Books = featuredBooks,
+                ContactForm = new ContactViewModel()
+            };
             return View(featuredBooks);
         }
 
@@ -47,7 +51,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
-       // [ValidateAntiForgeryToken]
+       //[ValidateAntiForgeryToken]
         public async Task<IActionResult> ContactUs(ContactViewModel model)
         {
             if (ModelState.IsValid)

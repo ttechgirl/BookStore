@@ -1,10 +1,10 @@
-﻿@model List<BookStore.DTO.BookDto>
+﻿@model IndexViewModel
 
 <div class="container">
     <section class="featured-books">
         <h2>Featured Books</h2>
         <div class="book-grid">
-            @foreach (var book in Model)
+            @foreach (var book in Model.Books)
             {
                 <div class="book-card">
                     <img src="@book.CoverImageUrl" alt="@book.Title Cover" />
@@ -26,32 +26,32 @@
             <form action="@Url.Action("ContactUs", "Home")" method="POST" class="form">
                 <div class="form-group">
                     <label for="fullName" class="form-label">Your FullName</label>
-                    <input type="text" name="FullName" class="form-input" placeholder="Enter your full name"
-                           value="@(ViewData["ContactForm"] as ContactViewModel)?.FullName" required />
+                    <input type="text" name="ContactForm.FullName" class="form-input" placeholder="Enter your full name"
+                           value="@Model.ContactForm.FullName" required />
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" name="Email" class="form-input" placeholder="Enter your email"
-                           value="@(ViewData["ContactForm"] as ContactViewModel)?.Email" required />
+                    <input type="email" name="ContactForm.Email" class="form-input" placeholder="Enter your email"
+                           value="@Model.ContactForm.Email" required />
                 </div>
 
                 <div class="form-group">
                     <label for="phone" class="form-label">Phone number</label>
-                    <input type="tel" name="PhoneNumber" class="form-input" placeholder="Enter your phone number"
-                           value="@(ViewData["ContactForm"] as ContactViewModel)?.PhoneNumber" required />
+                    <input type="tel" name="ContactForm.PhoneNumber" class="form-input" placeholder="Enter your phone number"
+                           value="@Model.ContactForm.PhoneNumber" required />
                 </div>
 
                 <div class="form-group">
                     <label for="bookTitle" class="form-label">Book Title</label>
-                    <input type="text" name="BookTitle" class="form-input" placeholder="Enter book title"
-                           value="@(ViewData["ContactForm"] as ContactViewModel)?.BookTitle" required />
+                    <input type="text" name="ContactForm.BookTitle" class="form-input" placeholder="Enter book title"
+                           value="@Model.ContactForm.BookTitle" required />
                 </div>
 
                 <div class="form-group">
                     <label for="message" class="form-label">Message</label>
-                    <textarea name="Message" class="form-input form-textarea" rows="4" required>
-                        @(ViewData["ContactForm"] as ContactViewModel)?.Message
+                    <textarea name="ContactForm.Message" class="form-input form-textarea" rows="4" required>
+                        @Model.ContactForm.Message
                     </textarea>
                 </div>
 
