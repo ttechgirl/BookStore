@@ -46,7 +46,8 @@ namespace BookStore.Controllers
             return View(getBooks);
         }
 
-        [HttpPost("ContactUs")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ContactUs(ContactViewModel model)
         {
             if (ModelState.IsValid)
@@ -93,7 +94,7 @@ namespace BookStore.Controllers
                 });
                 return RedirectToAction("Success");
             }
-            return View("ContactForm", model);
+            return View("Index", model);
         }
 
         public IActionResult Success()
