@@ -34,11 +34,7 @@ namespace BookStore.Controllers
         public async Task<ActionResult> Index()
         {
             var featuredBooks = await _bookService.FeaturedBooks();
-            var model = new IndexViewModel
-            {
-                Books = featuredBooks,
-                ContactForm = new ContactViewModel()
-            };
+          
             return View(featuredBooks);
         }
 
