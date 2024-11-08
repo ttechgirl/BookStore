@@ -34,7 +34,8 @@ namespace BookStore.Controllers
         public async Task<ActionResult> Index()
         {
             var featuredBooks = await _bookService.FeaturedBooks();
-          
+            ViewData["ContactForm"] = new ContactViewModel();
+
             return View(featuredBooks);
         }
 
@@ -42,12 +43,34 @@ namespace BookStore.Controllers
         public async Task<ActionResult> GetAllBooks()
         {
             var getBooks = await _bookService.GetAllBooks();
-            ViewData["ContactForm"] = new ContactViewModel();
             return View(getBooks);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetBookDetails(Guid id)
+        {
+            var getBook = await _bookService.GetByIdAsync(id);
+            if(getBook == null)
+            {
+                return BadRequest("No record found");
+            }
+            return View(getBook);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> FilterBooks(string? name, string? category, int pageIndex = 1, int pageSize = 10)
+        {
+            var getBooks = await _bookService.FilterBooks(name,category,pageIndex,pageSize);
+            if (getBooks == null)
+            {
+                return BadRequest("No record found");
+            }
+            return View(getBooks);
+        }
+
+
         [HttpPost]
-       //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ContactUs(ContactViewModel model)
         {
             if (ModelState.IsValid)
@@ -92,9 +115,10 @@ namespace BookStore.Controllers
                         throw;
                     }
                 });
-                return RedirectToAction("Success");
+                return RedirectToAction("Index");
             }
             return View("Index", model);
+            //return View("Index");
         }
 
         public IActionResult Success()

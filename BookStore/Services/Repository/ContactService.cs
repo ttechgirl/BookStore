@@ -27,6 +27,7 @@ namespace BookStore.Services.Repository
                 PhoneNumber = model.PhoneNumber,
                 BookTitle = model.BookTitle,
                 Message = model.Message,
+                CreatedOn = DateTime.Now.ToLocalTime(),
             };
             var mapModels = createContact.Map();
             await _dbContext.AddAsync(createContact);

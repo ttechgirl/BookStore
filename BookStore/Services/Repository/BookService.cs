@@ -32,7 +32,9 @@ namespace BookStore.Services.Repository
                 Price = model.Price,
                 IsFeatured = model.IsFeatured,
                 CoverImageUrl = model.CoverImageUrl,
-                Category = model.Category
+                Category = model.Category,
+                CreatedOn = DateTime.Now.ToLocalTime(),
+
             };
             var mapModels = createBook.Map();
             await _dbContext.AddAsync(createBook);
