@@ -1,8 +1,8 @@
 ﻿
          <div class="content">
-            <p><strong>FullName:</strong> [FullName]</p>
-            <p><strong>PhoneNumber:</strong> [PhoneNumber]</p>
-            <p><strong>Email:</strong> [Email]</p>
-            <p><strong>Title:</strong> [BookTitle]</p>
+            <p><strong>FullName:</strong> {FullName}</p>
+            <p><strong>PhoneNumber:</strong> {PhoneNumber}</p>
+            <p><strong>Email:</strong> {Email}</p>
+            <p><strong>Title:</strong> {BookTitle}</p>
             <p><strong>Message:</strong></p> <p>{Message}</p>
         </div>

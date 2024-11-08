@@ -60,7 +60,7 @@ namespace BookStore.Services.Repository
             {
                 try
                 {
-                    await client.ConnectAsync(_emailConfig?.From, _emailConfig.Port, SecureSocketOptions.Auto);
+                    await client.ConnectAsync(_emailConfig?.Host, _emailConfig.Port,SecureSocketOptions.Auto);
                     await client.AuthenticateAsync(_emailConfig.UserName, _emailConfig.Password);
                     await client.SendAsync(emailMessage);
                 }
@@ -100,7 +100,7 @@ namespace BookStore.Services.Repository
             {
                 try
                 {
-                    await client.ConnectAsync(_emailConfig?.From, _emailConfig.Port, true);
+                    await client.ConnectAsync(_emailConfig?.Host, _emailConfig.Port, SecureSocketOptions.Auto);
                     await client.AuthenticateAsync(_emailConfig.UserName, _emailConfig.Password);
                     await client.SendAsync(emailMessage);
                 }
