@@ -17,6 +17,7 @@ namespace BookStore.Services.Repository
         {
             _dbContext = dbContext;
         }
+
         public async Task<BookDto> AddBooks(BookViewModel model)
         {
             var books = await _dbContext.Books.Where(b => b.Title != null).FirstOrDefaultAsync();

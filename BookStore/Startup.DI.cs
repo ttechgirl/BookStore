@@ -18,7 +18,6 @@ namespace BookStore
             builder.Services.AddScoped<IServiceResponse, ServiceResponse>();
 
             // configurations
-            //builder.Services.Configure<EmailConfig>(builder.Configuration.GetSection(nameof(EmailConfig)));
             builder.Services.Configure<EmailConfig>(builder.Configuration.GetSection("EmailConfig"));
             builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
