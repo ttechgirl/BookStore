@@ -52,27 +52,6 @@ namespace BookStore
             upgrader.PerformUpgrade();
         }
 
-        /// <summary>
-        /// Sql migration for stored procedure
-        /// </summary>
-        //public static void StoredProcedureMigrationScript(this WebApplication app)
-        //{
-        //    string dbConnStr = app.Configuration.GetConnectionString("Default");
-        //    EnsureDatabase.For.SqlDatabase(dbConnStr);
-
-        //    var upgrader = DeployChanges.To.SqlDatabase(dbConnStr)
-        //    .WithScriptsFromFileSystem(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sql", "Sprocs"))
-        //    .WithTransactionPerScript()
-        //    .JournalTo(new NullJournal())
-        //    .JournalToSqlTable("dbo", "SprocsMigration")
-        //    .LogTo(new SerilogDbUpLog(app.Logger))
-        //    .LogToConsole()
-        //    .Build();
-
-        //    upgrader.PerformUpgrade();
-        //}
-
-
         private class SerilogDbUpLog : IUpgradeLog
         {
 
